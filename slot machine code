@@ -1,0 +1,80 @@
+#include <LiquidCrystal.h>
+#include <Servo.h>
+Servo sg90;
+//random degiskenleri tanımlama
+long randNumber;
+long raandNumber;
+long rrandNumber;
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+
+void setup() {
+
+  sg90.attach(6);
+  sg90.write(0);
+  lcd.begin(16, 2);
+  lcd.print("HOSGELDINIZ");
+  delay(1000);
+  lcd.clear();
+  lcd.print("BUTONA BASIN");
+  delay(1000);
+  lcd.clear();
+  pinMode(9, INPUT);
+}
+
+void loop() {
+
+  if (digitalRead(9) == 0) {
+    lcd.setCursor(0, 0);
+    lcd.print("BUTONA BASIN");
+  }
+  if (digitalRead(9) == 1)
+
+  {
+    lcd.clear();
+    lcd.print("sayilar ");
+    lcd.setCursor(0, 1);
+    lcd.print("karistiriliyor..");
+    delay(2000);
+    lcd.clear();
+    // randNumber = random(0, 10);
+
+    // rrandNumber = random(0, 10);
+
+    // raandNumber = random(0, 10);
+
+    randNumber = 1;
+
+    rrandNumber = 1;
+
+    raandNumber = 1;
+
+
+    lcd.setCursor(2, 0);
+    lcd.print(randNumber);
+    lcd.setCursor(8, 0);
+    lcd.print(rrandNumber);
+    lcd.setCursor(13, 0);
+    lcd.print(raandNumber);
+    delay(2000);
+    lcd.clear();
+
+    if (randNumber == rrandNumber && randNumber == raandNumber) {
+      lcd.setCursor(0, 0);
+      lcd.print("KAZANDINIZ :)");
+      delay(1000);
+      sg90.write(60);
+      delay(3000);
+      sg90.write(0);
+      delay(2000);
+      lcd.clear();
+    } else {
+      lcd.setCursor(0, 0);
+      lcd.print("KAYBETTINIZ :(");
+      delay(2000);
+      lcd.clear();
+    }
+  }
+}
