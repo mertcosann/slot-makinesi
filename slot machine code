@@ -39,19 +39,12 @@ void loop() {
     lcd.print("karistiriliyor..");
     delay(2000);
     lcd.clear();
-    // randNumber = random(0, 10);
+     randNumber = random(0, 10);
 
-    // rrandNumber = random(0, 10);
+     rrandNumber = random(0, 10);
 
-    // raandNumber = random(0, 10);
-
-    randNumber = 1;
-
-    rrandNumber = 1;
-
-    raandNumber = 1;
-
-
+     raandNumber = random(0, 10);
+     
     lcd.setCursor(2, 0);
     lcd.print(randNumber);
     lcd.setCursor(8, 0);
